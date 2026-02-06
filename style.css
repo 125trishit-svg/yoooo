@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  background: url("https://i.pinimg.com/736x/48/69/97/486997a8846259945f8ff3cd4f629268.jpg") center/cover no-repeat;
+}
+
+#app::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(90, 24, 154, 0.65);
+  z-index: -1;
+}
+
+.screen {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  padding: 24px;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen.active {
+  display: flex;
+}
+
+img {
+  max-width: 340px;
+  margin-bottom: 20px;
+}
+
+.type {
+  font-size: 24px;
+  line-height: 1.5;
+  min-height: 2.5em;
+}
+
+button {
+  background: white;
+  color: #5A189A;
+  border: none;
+  padding: 16px 28px;
+  margin: 12px;
+  font-size: 20px;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.08);
+}
+
+#confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .type {
+    font-size: 2.2rem;
+    font-weight: 600;
+  }
+  img {
+    max-width: 360px;
+  }
+  button {
+    font-size: 1.3rem;
+  }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="https://raw.githubusercontent.com/125trishit-svg/music-files/main/hehe.mp3" type="audio/mpeg">
+</audio>
+
+<div id="app">
+
+  <div id="loading" class="screen active">
+    <img src="https://media3.giphy.com/media/okfvUCpgArv3y/giphy.gif">
+    <h2 class="type" data-text="Something special is on the way..."></h2>
+  </div>
+
+  <div id="surpriseAsk" class="screen">
+    <img src="https://media.giphy.com/media/VJbyqZR4X7kW6tSm5U/giphy.gif">
+    <h1 class="type" data-text="I have a little surprise for you 👀💝"></h1>
+    <button onclick="go('main')">Yes 😍</button>
+  </div>
+
+  <div id="main" class="screen">
+    <img src="https://media4.giphy.com/media/Zl7u48zLVFgLpRwq6f/giphy.gif">
+    <h1 class="type" data-text="Hey, do you love me? 💖"></h1>
+    <button onclick="go('yesPage')">Yes 💖</button>
+  </div>
+
+  <div id="yesPage" class="screen">
+    <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+    <h1 class="type" data-text="Haaa! I knew it 😏"></h1>
+    <button onclick="go('valentinePage')">SOO...</button>
+  </div>
+
+  <div id="valentinePage" class="screen">
+    <img src="https://media.giphy.com/media/1FMaabePDEfgk/giphy.gif">
+    <h1 class="type" data-text="Will you be my Valentine? 💘"></h1>
+    <button onclick="acceptVal()">YES 💖</button>
+  </div>
+
+  <div id="giftPage" class="screen">
+    <img src="https://media.giphy.com/media/dvdcBNbAiNVT9Z0iwP/giphy.gif">
+    <h1 class="type" data-text="Here’s my gift for the next 7 days 💝"></h1>
+    <button onclick="go('roseDay')">Let’s go 🚀</button>
+  </div>
+
+  <div id="roseDay" class="screen">
+    <img src="https://i.pinimg.com/1200x/1a/9b/16/1a9b160a7e3f8428f655f48cf340b765.jpg">
+    <h1 class="type" data-text="🌹 Happy Rose Day 🌹"></h1>
+    <p class="type" data-text="A rose for the one who makes my days bloom 💖"></p>
+    <button onclick="go('proposeDay')">Next</button>
+  </div>
+
+  <div id="proposeDay" class="screen">
+    <img src="https://media.giphy.com/media/fTmRLmuQ2BIzXlujyY/giphy.gif">
+    <h1 class="type" data-text="💍 Happy Propose Day 💍"></h1>
+    <p class="type" data-text="Will you walk this life with me? 💖"></p>
+    <button onclick="go('valentineFinal')">Next</button>
+  </div>
+
+  <div id="valentineFinal" class="screen">
+    <img src="https://media2.giphy.com/media/3ohs4CoKEBL9QNUglq/giphy.gif">
+    <h1 class="type" data-text="❤️ Happy Valentine’s Day ❤️"></h1>
+    <p class="type" data-text="Every day with you is my favorite love story 💘"></p>
+  </div>
+
+</div>
+
+<canvas id="confetti"></canvas>
+
+<!-- JS -->
+<script src="script.js"></script>
+</body>
+</html>
