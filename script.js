@@ -1,85 +1,180 @@
-function go(id) {
-  document.querySelectorAll(".screen").forEach(s =>
-    s.classList.remove("active")
-  );
+/* ---------- SCREEN SWITCH ---------- */
+function show(id) {
+  document.querySelectorAll(".screen").forEach(s => {
+    s.classList.remove("active");
+  });
+
   const screen = document.getElementById(id);
   screen.classList.add("active");
-  typeScreen(screen);
-}
 
-function typeScreen(screen) {
   const texts = screen.querySelectorAll(".type");
-  let i = 0;
 
-  function next() {
-    if (i >= texts.length) return;
-    type(texts[i++], next);
+  let index = 0;
+
+  function typeNext() {
+    if (index >= texts.length) return;
+    typeWriter(texts[index], () => {
+      index++;
+      typeNext();
+    });
   }
-  next();
+
+  typeNext();
 }
 
-function type(el, done) {
+/* ---------- TYPEWRITER ---------- */
+function typeWriter(el, done) {
   const text = el.dataset.text;
   el.innerHTML = "";
   let i = 0;
 
-  const timer = setInterval(() => {
-    el.innerHTML += text[i++];
+  const interval = setInterval(() => {
+    el.innerHTML += text.charAt(i);
+    i++;
     if (i >= text.length) {
-      clearInterval(timer);
+      clearInterval(interval);
       if (done) done();
     }
   }, 40);
 }
 
-function acceptVal() {
-  playMusic();
-  launchConfetti();
-  setTimeout(() => go("giftPage"), 2500);
-}
 
+/* ---------- START FLOW ---------- */
+window.addEventListener("load", () => {
+  show("loading");
+  setTimeout(() => show("surpriseAsk"), 2000);
+});
+
+/* ---------- MUSIC ---------- */
 function playMusic() {
-  const m = document.getElementById("bgMusic");
-  m.volume = 0.4;
-  m.play().catch(() => {});
+  const music = document.getElementById("bgMusic");
+  if (!music) return;
+  music.volume = 0.4;
+  music.play().catch(() => {});
 }
 
-window.onload = () => {
-  typeScreen(document.getElementById("loading"));
-  setTimeout(() => go("surpriseAsk"), 2000);
-};
+/* ---------- BUTTON NAV ---------- */
+function goMain() {
+  playMusic();
+  show("main");
+}
 
-/* CONFETTI */
+function surpriseNo() {
+  show("forceYes");
+}
+
+function yesClick() {
+  playMusic();
+  show("yesPage");
+}
+
+function noClick() {
+  show("noPage");
+}
+
+function backYes() {
+  show("yesPage");
+}
+
+/* ---------- SOO BUTTON ---------- */
+function goValentine() {
+  show("valentinePage");
+}
+
+let yesAlreadyClicked = false;
+
+function yesClicked() {
+  if (yesAlreadyClicked) return; // stop double click
+  yesAlreadyClicked = true;
+
+  const yesBtn = document.getElementById("yesBtn");
+  yesBtn.disabled = true;
+  yesBtn.style.opacity = "0.6";
+  yesBtn.style.pointerEvents = "none";
+
+  launchConfetti();
+
+   setTimeout(() => {
+    show("giftPage");
+  }, 2500);
+}
+
+/* ---------- VALENTINE TRAP ---------- */
+let yesScale = 1;
+
+function valNo() {
+  yesScale += 0.3;
+
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noVal");
+
+  if (!yesBtn || !noBtn) return;
+
+  yesBtn.style.transform = `scale(${yesScale})`;
+
+  if (yesScale > 2) {
+    noBtn.style.display = "none";
+    yesBtn.style.transform = "scale(3)";
+  }
+}
+
+
+function valYes() {
+  launchConfetti();
+
+  // After confetti, go to gift page
+  setTimeout(() => {
+    show("giftPage");
+  }, 2500);
+}
+
+/* ---------- CONFETTI ---------- */
 const canvas = document.getElementById("confetti");
 const ctx = canvas.getContext("2d");
+let confettiPieces = [];
 
-canvas.width = innerWidth;
-canvas.height = innerHeight;
-
-let pieces = [];
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
 
 function launchConfetti() {
-  pieces = Array.from({ length: 150 }, () => ({
-    x: Math.random() * canvas.width,
-    y: -20,
-    r: Math.random() * 6 + 4,
-    d: Math.random() * 6 + 3,
-    c: `hsl(${Math.random() * 360},100%,70%)`
-  }));
-  animate();
+  confettiPieces = [];
+  for (let i = 0; i < 150; i++) {
+    confettiPieces.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height - canvas.height,
+      r: Math.random() * 6 + 4,
+      d: Math.random() * 10 + 5,
+      color: `hsl(${Math.random() * 360},100%,70%)`,
+      tilt: Math.random() * 10
+    });
+  }
+  animateConfetti();
 }
 
-function animate() {
+function animateConfetti() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  pieces.forEach(p => {
+  confettiPieces.forEach(p => {
     ctx.beginPath();
-    ctx.fillStyle = p.c;
+    ctx.fillStyle = p.color;
     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
     ctx.fill();
-    p.y += p.d;
+
+    p.y += p.d * 0.3;
+    p.x += Math.sin(p.tilt);
   });
 
-  pieces = pieces.filter(p => p.y < canvas.height);
-  if (pieces.length) requestAnimationFrame(animate);
+  confettiPieces = confettiPieces.filter(p => p.y < canvas.height + 20);
+
+  if (confettiPieces.length) {
+    requestAnimationFrame(animateConfetti);
+  }
+}
+
+function goRoseDay() {
+  show("roseDay");
 }
