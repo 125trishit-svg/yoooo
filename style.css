@@ -221,3 +221,8 @@ button:hover {
     width: 180px;
   }
 }
+
+.hidden {
+  display: none !important;
+}
+
