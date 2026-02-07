@@ -42,7 +42,7 @@ function typeWriter(el, done) {
 /* ---------- START FLOW ---------- */
 window.addEventListener("load", () => {
   show("loading");
-  setTimeout(() => show("surpriseAsk"), 2000);
+  setTimeout(() => show("surpriseAsk"), 2600);
 });
 
 /* ---------- MUSIC ---------- */
@@ -118,15 +118,11 @@ function valNo() {
   }
 }
 
-
-function valYes() {
-  launchConfetti();
-
   // After confetti, go to gift page
-  setTimeout(() => {
-    show("giftPage");
-  }, 2500);
-}
+ setTimeout(() => {
+  show("giftPage");
+}, 2000);
+
 
 /* ---------- CONFETTI ---------- */
 const canvas = document.getElementById("confetti");
@@ -178,3 +174,4 @@ function animateConfetti() {
 function goRoseDay() {
   show("roseDay");
 }
+
