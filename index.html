@@ -1,85 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Valentine 💖</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8">
+    <title>hehe</title>
+    <link rel="stylesheet" href="./style.css">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+  </head>
+    
+  <body>
+  <div id="app">
+  <!-- Add inside <head> -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-  <script src="script.js"></script>
-</head>
+<meta charset="UTF-8">
 
-<body>
-
-<audio id="bgMusic" loop>
-  <source src="https://raw.githubusercontent.com/125trishit-svg/music-files/main/hehe.mp3" type="audio/mpeg">
+  <audio id="bgMusic" loop>
+  <source src="https://raw.githubusercontent.com/125trishit-svg/music-files/main/hehe.mp3
+" type="audio/mpeg">
 </audio>
 
-<div id="app">
-
+  <!-- LOADING SCREEN -->
   <div id="loading" class="screen active">
-    <img src="https://media3.giphy.com/media/okfvUCpgArv3y/giphy.gif">
-    <h2 class="type" data-text="Something special is on the way..."></h2>
+    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2dub2FlajcxNm4zNzBwZ2Y0bmR6ZzFubDlnZGM5ajZ0eThlemVwbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/okfvUCpgArv3y/giphy.gif">
+    <h2 class="type" data-text="Something special on the way..."></h2>
+
+    <div class="loader">
+      <div class="bar"></div>
+    </div>
   </div>
 
+  <!-- SURPRISE ASK PAGE -->
   <div id="surpriseAsk" class="screen">
-    <img src="https://media.giphy.com/media/VJbyqZR4X7kW6tSm5U/giphy.gif">
-    <h1 class="type" data-text="I have a little surprise for you 👀💝"></h1>
-    <button onclick="go('main')">Yes 😍</button>
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcms3NnA4MjVuYjJxYXJ1ZW45NGR1dmhiM3lpbjBwMHpiOWIwaDlpbyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/VJbyqZR4X7kW6tSm5U/giphy.gif">
+    <h1 class="type" data-text="I have prepared a little surprise for you 👀💝 Do you want to check it out?"></h1>
+
+    <div class="btns">
+      <button onclick="goMain()">Yes 😍</button>
+      <button onclick="surpriseNo()">No 🙄</button>
+    </div>
   </div>
 
+  <!-- FORCE YES PAGE -->
+  <div id="forceYes" class="screen">
+    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDFnNTR2dXo0YW5kamp6NGk5eTF5d2F1ZGhld2xvbmhkaXJyeXd3YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/W85MyotCDN7AwogyKK/giphy.gif">
+    <h1 class="type" data-text="YOUU WANT TO CHECK IT OUT RIGHT 😤 WHAT DO YOU MEAN NOO!"></h1>
+
+    <button onclick="goMain()">Check it out 😒</button>
+  </div>
+
+  <!-- MAIN PAGE -->
   <div id="main" class="screen">
-    <img src="https://media4.giphy.com/media/Zl7u48zLVFgLpRwq6f/giphy.gif">
+    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXQxcDV0dW8yMnJxdnRqMTlrYWg1NHY2NDh4Z2QyaGgyazhnb2VodSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Zl7u48zLVFgLpRwq6f/giphy.gif">
     <h1 class="type" data-text="Hey, do you love me? 💖"></h1>
-    <button onclick="go('yesPage')">Yes 💖</button>
+
+    <div class="btns">
+      <button onclick="yesClick()">Yes 💖</button>
+      <button onclick="noClick()">No ❌</button>
+    </div>
   </div>
 
+  <!-- NO PAGE -->
+  <div id="noPage" class="screen">
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzIxMWs1MDN1aDVlOWYxazdzdHFhcjgycWszNmNpY3g5Mjd2NTVoMSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/sSKkhbWPw1TyKhhG5o/giphy.gif">
+    <h1 class="type" data-text="haw fuck youuu that’s mean 😤"></h1>
+
+    <button onclick="goMain()">Try Again</button>
+  </div>
+
+  <!-- YES PAGE -->
   <div id="yesPage" class="screen">
     <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
-    <h1 class="type" data-text="Haaa! I knew it 😏"></h1>
-    <button onclick="go('valentinePage')">SOO...</button>
+    <h1 class="type" data-text="haaa! i knew itt 😏"></h1>
+
+    <div class="btns">
+      <button onclick="goValentine()">SOO...</button>
+    </div>
   </div>
 
-  <div id="valentinePage" class="screen">
-    <img src="https://media.giphy.com/media/1FMaabePDEfgk/giphy.gif">
-    <h1 class="type" data-text="Will you be my Valentine? 💘"></h1>
-    <button onclick="acceptVal()">YES 💖</button>
-  </div>
+  <!-- STUCK PAGE -->
+  <div id="stuck" class="screen">
+    <img src="https://media.giphy.com/media/3o7aD4YQKf3Z8z5P5C/giphy.gif">
+    <h1 class="type" data-text="haaa u r stuck 😈 no escape from this point"></h1>
 
-  <div id="giftPage" class="screen">
-    <img src="https://media.giphy.com/media/dvdcBNbAiNVT9Z0iwP/giphy.gif">
-    <h1 class="type" data-text="Here’s my gift for the next 7 days 💝"></h1>
-    <button onclick="go('roseDay')">Let’s go 🚀</button>
+    <button onclick="backYes()">Try Again</button>
   </div>
+  
+  <!-- VALENTINE PAGE -->
+<div id="valentinePage" class="screen">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2NuOW1raGEzOXkyZDl6Z2t4eGFkeDk4emkxbGprY2ttN2tpdmNhNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1FMaabePDEfgk/giphy.gif">
 
-  <div id="roseDay" class="screen">
-    <img src="https://i.pinimg.com/1200x/1a/9b/16/1a9b160a7e3f8428f655f48cf340b765.jpg">
-    <h1 class="type" data-text="🌹 Happy Rose Day 🌹"></h1>
-    <p class="type" data-text="A rose for the one who makes my days bloom 💖"></p>
-    <button onclick="go('proposeDay')">Next</button>
-  </div>
+  <h1 class="type" data-text="Will you be my Valentine? 💘"></h1>
 
-  <div id="proposeDay" class="screen">
-    <img src="https://media.giphy.com/media/fTmRLmuQ2BIzXlujyY/giphy.gif">
-    <h1 class="type" data-text="💍 Happy Propose Day 💍"></h1>
-    <p class="type" data-text="Will you walk this life with me? 💖"></p>
-    <button onclick="go('valentineFinal')">Next</button>
-  </div>
+  <div class="btns">
+    <button id="yesBtn" onclick="yesClicked()">YES 💖</button>
 
-  <div id="valentineFinal" class="screen">
-    <img src="https://media2.giphy.com/media/3ohs4CoKEBL9QNUglq/giphy.gif">
-    <h1 class="type" data-text="❤️ Happy Valentine’s Day ❤️"></h1>
-    <p class="type" data-text="Every day with you is my favorite love story 💘"></p>
+    <button id="noVal" onclick="valNo()">No 😶</button>
   </div>
+</div>
+  
+  <!-- GIFT INTRO PAGE -->
+<div id="giftPage" class="screen">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXZmcGR0OHpsaW0zcGk0bGE0ZXZyNDV6czgybG9rYjgyMmZlanY3ZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/dvdcBNbAiNVT9Z0iwP/giphy.gif">
+  <h1 class="type" data-text="Here’s my gift for you 💝 for the next seven days of Valentine Week 😌✨"></h1>
+
+  <div class="btns">
+    <button onclick="goRoseDay()">Let’s Goo 🚀</button>
+  </div>
+</div>
+
+<!-- ROSE DAY PAGE -->
+<div id="roseDay" class="screen">
+  <img 
+  src="https://i.pinimg.com/1200x/1a/9b/16/1a9b160a7e3f8428f655f48cf340b765.jpg" 
+  alt="Valentine Image"
+>
+  >
+
+  <h1 class="type"
+      data-text="🌹 Happy Rose Day 🌹">
+  </h1>
+
+  <p class="type rose-para"
+     data-text="A rose for the one who makes my days bloom 💖 Just like this rose, my feelings for you are soft, pure and meant only for you. Well i still remember that day when i first noticed youu your eyess, your face, andd the main your personalityy it made me sure that if i really want to ask someone out it will be you and you only.I still get butterflies in my stomach when I see you. It’s the same as the day that we first met, and I feel a sense of comfort whenever I’m with you. I can’t wait to spend the rest of my life with you.">
+  </p>
+
+ <button class="next-btn" onclick="show('proposeDay')">Next..</button>
+</div>
+
+  <div id="proposeDay" class="screen hidden">
+  <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTY1djVsNnk2YWVtanUzejFucnpzbHNzbTU3ZTFrbnNzMzR3MWk3cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fTmRLmuQ2BIzXlujyY/giphy.gif">
+  <h1 class="type" data-text="💍 Happy Propose Day 💍"></h1>
+  <p class="type"
+     data-text="I may not be perfect, but my feelings are real.
+Will you hold my hand and walk this beautiful life with me? 💖 Likee i still rememberr that kii okiee ik you likee/love me then butt i was not sureee and when u approachedd me like in insta and all andd suddenlyyy thee comfort me startedd to feel andd i was actually regretting ki why i lied i have crush on someonee andd eventualllyy i startedd ki not possible i am suree i dont want to date anyyoneee butt i couldntt hold back asked youu created suspense an asked u outt it was lowkeyy cooll">
+  </p>
+ <button onclick="show('chocolateDay')">Next..</button>
+</div>
+
+  <div id="chocolateDay" class="screen hidden">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExazhlNHZodm5sNmYxbGd1bmw3NTFzOXk4bGh0ZWw0N3c3bm5rYjlucyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/hQogvsCMStLIuOlDv1/giphy.gif">
+  <h1 class="type" data-text="🍫 Happy Chocolate Day 🍫"></h1>
+  <p class="type"
+     data-text="Just like chocolate, you make my life sweeter in every way 💕 as choclatee you are sweett, my favouritee, addictivee itt justt as choclatee you have make my lifee tastess better whenever me with youuu">
+  </p>
+ <button onclick="show('teddyDay')">Next..</button>
+</div>
+
+  <div id="teddyDay" class="screen hidden">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGVvaGJydDl1NnY4OHVsMXAyajFydDFodjk1MGxkbWU5ZG56NHVnNyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/WyiDoI5T7thSrLTtdS/giphy.gif">
+  <h1 class="type" data-text="🧸 Happy Teddy Day 🧸"></h1>
+  <p class="type"
+     data-text="Whenever you feel low, remember there’s someone who wants to hug you forever and everr 🤗 uk uk wheneverrr thee lifee feels heavyy whenever im  loww your myy soft placee to falll I loveeeee youuuuuu mwaahhh">
+  </p>
+  <button onclick="show('promiseDay')">Next..</button>
+</div>
+
+  <div id="promiseDay" class="screen hidden">
+  <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXR6c3pkd3Y3ZDFyczR5YzlybDh5NWE5dmw2Mjc3eDU0b253NmtoZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IPlurp1TLz8rrJHZwj/giphy.gif">
+  <h1 class="type" data-text="🤞 Happy Promise Day 🤞"></h1>
+  <p class="type"
+     data-text="I promise to stand by you, in smiles and storms, always 💖. Dont forgett thatt i amm alwaysss like really alwayys with youuuu i am hereeee justt so you knoww. I will try my bestt to keep youu happy as much as i can, become ur comfort zonee, be ur bestfriendd whoom u wont hide anythingg. Thankk youuu...">
+  </p>
+    <button onclick="show('hugDay')">Next..</button>
+</div>
+
+  <div id="hugDay" class="screen hidden">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjlmMXN3dWE2dnR3aW1sbXN4ejFoYmx0dzgzOHh2bDg0MWZueTl6NSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xT39CXg70nNS0MFNLy/giphy.gif">
+  <h1 class="type" data-text="🤗 Happy Hug Day 🤗"></h1>
+  <p class="type"
+     data-text="A hug from you can fix anything in this world 💞. I actualllyyy thoughtt i hate hugss it was onlyy u and onlyy u who madee me thiss comfortablee likeeeee youu getting a single hugg makess my dayyy mood pn u have magic in ur hugss">
+  </p>
+  <button onclick="show('kissDay')">Next..</button>
+</div>
+
+  <div id="kissDay" class="screen hidden">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTIxdGZ6M3psemdhcHBnOTl0N3YzcThiZXR3MXk3YTFncjl3M3RxbiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ytu2GUYbvhz7zShGwS/giphy.gif">
+  <h1 class="type" data-text="😘 Happy Kiss Day 😘"></h1>
+  <p class="type"
+     data-text="One kiss, a thousand feelings, all just for you 💋 12th jaunuaary,2026 yhhh i rememberr thattt bleeehhhhh itt will and alwayss be my craziestttt memory i will alwayss treasuree itttt and everyyyy kisses johh butterflyyy rushhh huee thee naaaa I LOVEEEEE YOUUUUU">
+  </p>
+  <button onclick="show('valentineDay')">Next..</button>
+</div>
+
+<div id="valentineDay" class="screen">
+  <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTBhYjFoMjk2b3RwZDN5eTJ0NmVkNWFhdmxzZmszbzQ5cWo4c2Q5MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3ohs4CoKEBL9QNUglq/giphy.gif">
+  <h1 class="type" data-text="❤️ Happy Valentine’s Day shanni  "></h1>
+  <p class="type" data-text="Every day with you is my favorite love story 💘 I LOEVEEE YOUU thatsss alll i preparedd i hope u like ittt"></p>
 
 </div>
 
-<canvas id="confetti"></canvas>
-</body>
-</html>
+  
+</div>
 
+<canvas id="confetti"></canvas>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
